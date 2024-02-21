@@ -24,6 +24,8 @@ export interface RoughAnnotationConfigBase {
   padding?: RoughPadding; // defaults to 5px
   iterations?: number; // defaults to 2
   brackets?: BracketType | BracketType[]; // defaults to 'right'
+  // Additional class added to the annotation
+  class?: string
 }
 
 export interface RoughAnnotation extends RoughAnnotationConfigBase {
