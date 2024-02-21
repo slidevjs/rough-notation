@@ -1,6 +1,6 @@
 {
   "name": "@slidev/rough-notation",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "type": "module",
   "description": "Create and animate hand-drawn annotations on a web page",
   "main": "dist/index.mjs",
