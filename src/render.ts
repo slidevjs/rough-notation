@@ -1,12 +1,25 @@
-import { Rect, RoughAnnotationConfig, SVG_NS, FullPadding, BracketType } from './model.js';
+import { SVG_NS } from './constants'
+import { Rect, RoughAnnotationConfig, FullPadding, BracketType } from "./types";
 import { ResolvedOptions, OpSet } from 'roughjs/bin/core';
 import { line, rectangle, ellipse, linearPath } from 'roughjs/bin/renderer';
+import { RoughGenerator } from 'roughjs/bin/generator';
 import { Point } from 'roughjs/bin/geometry';
 
 type RoughOptionsType = 'highlight' | 'single' | 'double';
 
+let defaultOptions: ResolvedOptions | null = null;
+function getDefaultOptions(): ResolvedOptions {
+  if (!defaultOptions) {
+    const gen = new RoughGenerator();
+    defaultOptions = gen.defaultOptions;
+  }
+  return defaultOptions;
+}
+
+
 function getOptions(type: RoughOptionsType, seed: number): ResolvedOptions {
   return {
+    ...getDefaultOptions(),
     maxRandomnessOffset: 2,
     roughness: type === 'highlight' ? 3 : 1.5,
     bowing: 1,
@@ -22,7 +35,7 @@ function getOptions(type: RoughOptionsType, seed: number): ResolvedOptions {
     dashOffset: -1,
     dashGap: -1,
     zigzagOffset: -1,
-    combineNestedSvgPaths: false,
+    // combineNestedSvgPaths: false,
     disableMultiStroke: type !== 'double',
     disableMultiStrokeFill: false,
     seed

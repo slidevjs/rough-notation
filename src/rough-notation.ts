@@ -1,9 +1,8 @@
-import { Rect, RoughAnnotationConfig, RoughAnnotation, SVG_NS, RoughAnnotationGroup, DEFAULT_ANIMATION_DURATION } from './model.js';
+import { SVG_NS, DEFAULT_ANIMATION_DURATION } from './constants';
+import { Rect, RoughAnnotationConfig, RoughAnnotation, RoughAnnotationGroup, AnnotationState } from "./types";
 import { renderAnnotation } from './render.js';
 import { ensureKeyframes } from './keyframes.js';
 import { randomSeed } from 'roughjs/bin/math';
-
-type AnnotationState = 'unattached' | 'not-showing' | 'showing';
 
 class RoughAnnotationImpl implements RoughAnnotation {
   private _state: AnnotationState = 'unattached';
