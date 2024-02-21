@@ -1,5 +1,3 @@
-![Rough Notation logo](https://roughnotation.com/images/social.png)
-
 # @slidev/rough-notation
 
 Fork of [rough-notation](https://github.com/rough-stuff/rough-notation)

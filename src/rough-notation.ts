@@ -163,27 +163,24 @@ class RoughAnnotationImpl implements RoughAnnotation {
       this.pendingRefresh = Promise.resolve().then(() => {
         if (this.isShowing())
           this.show()
-
         delete this.pendingRefresh
       })
     }
   }
 
-  show(): void {
+  async show(): Promise<void> {
     switch (this._state) {
       case 'unattached':
         break
       case 'showing':
         this.hide()
         if (this._svg)
-          this.render(this._svg, true)
-
+          await this.render(this._svg, true)
         break
       case 'not-showing':
         this.attach()
         if (this._svg)
-          this.render(this._svg, false)
-
+          await this.render(this._svg, false)
         break
     }
   }
@@ -205,7 +202,7 @@ class RoughAnnotationImpl implements RoughAnnotation {
     this.detachListeners()
   }
 
-  private render(svg: SVGSVGElement, ensureNoAnimation: boolean) {
+  private async render(svg: SVGSVGElement, ensureNoAnimation: boolean) {
     let config = this._config
     if (ensureNoAnimation) {
       config = JSON.parse(JSON.stringify(this._config))
@@ -216,14 +213,18 @@ class RoughAnnotationImpl implements RoughAnnotation {
     rects.forEach(rect => totalWidth += rect.w)
     const totalDuration = (config.animationDuration || DEFAULT_ANIMATION_DURATION)
     let delay = 0
+    const promises: Promise<void>[] = []
     for (let i = 0; i < rects.length; i++) {
       const rect = rects[i]
       const ad = totalDuration * (rect.w / totalWidth)
-      renderAnnotation(svg, rects[i], config, delay + this._animationDelay, ad, this._seed)
+      promises.push(
+        renderAnnotation(svg, rects[i], config, delay + this._animationDelay, ad, this._seed),
+      )
       delay += ad
     }
     this._lastSizes = rects
     this._state = 'showing'
+    return await Promise.all(promises)
   }
 
   private rects(): Rect[] {
