@@ -1,41 +1,42 @@
 {
   "name": "@slidev/rough-notation",
-  "version": "0.0.1",
   "type": "module",
+  "version": "0.0.1",
   "description": "Create and animate hand-drawn annotations on a web page",
-  "main": "dist/index.mjs",
-  "module": "dist/index.cjs",
-  "types": "dist/index.d.mts",
-  "scripts": {
-    "build": "unbuild",
-    "prepack": "npm run build",
-    "release": "bumpp && pnpm publish",
-    "lint": "tslint -p tsconfig.json"
-  },
+  "author": "Preet Shihn",
+  "license": "MIT",
+  "homepage": "https://github.com/slidevjs/rough-notation#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/slidev/rough-notation.git"
+    "url": "git+https://github.com/slidevjs/rough-notation.git"
+  },
+  "bugs": {
+    "url": "https://github.com/slidevjs/rough-notation/issues"
   },
   "keywords": [
     "annotate",
     "rough",
     "sketchy"
   ],
+  "main": "dist/index.mjs",
+  "module": "dist/index.cjs",
+  "types": "dist/index.d.mts",
   "files": [
     "dist"
   ],
-  "author": "Preet Shihn",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/pshihn/rough-notation/issues"
+  "scripts": {
+    "build": "unbuild",
+    "prepack": "npm run build",
+    "release": "bumpp && pnpm publish",
+    "lint": "eslint ."
   },
-  "homepage": "https://github.com/pshihn/rough-notation#readme",
   "dependencies": {
     "roughjs": "^4.6.6"
   },
   "devDependencies": {
+    "@antfu/eslint-config": "^2.6.4",
     "bumpp": "^9.3.0",
-    "tslint": "^6.1.3",
+    "eslint": "^8.56.0",
     "typescript": "^5.3.3",
     "unbuild": "^2.0.0"
   }
