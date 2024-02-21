@@ -8,6 +8,7 @@
   "types": "dist/index.d.mts",
   "scripts": {
     "build": "unbuild",
+    "prepack": "npm run build",
     "lint": "tslint -p tsconfig.json"
   },
   "repository": {
