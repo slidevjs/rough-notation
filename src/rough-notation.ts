@@ -40,6 +40,16 @@ class RoughAnnotationImpl implements RoughAnnotation {
     }
   }
 
+  get class() { return this._config.class; }
+  set class(value) {
+    if (this._config.class !== value) {
+      this._config.class = value;
+      if (this._svg) {
+        this._svg.setAttribute('class', ['rough-annotation', this._config.class || ''].filter(Boolean).join(' '));
+      }
+    }
+  }
+
   get strokeWidth() { return this._config.strokeWidth; }
   set strokeWidth(value) {
     if (this._config.strokeWidth !== value) {
