@@ -1,3 +1,5 @@
+import type { ResolvedOptions } from 'roughjs/bin/core'
+
 export interface Rect {
   x: number
   y: number
@@ -24,8 +26,14 @@ export interface RoughAnnotationConfigBase {
   padding?: RoughPadding // defaults to 5px
   iterations?: number // defaults to 2
   brackets?: BracketType | BracketType[] // defaults to 'right'
-  // Additional class added to the annotation
+  /**
+   * Additional class to add to the root SVG element
+   */
   class?: string
+  /**
+   * RoughJS options
+   */
+  overrides?: Partial<ResolvedOptions>
 }
 
 export interface RoughAnnotation extends RoughAnnotationConfigBase {
