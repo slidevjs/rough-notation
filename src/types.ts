@@ -12,13 +12,13 @@ export type FullPadding = [number, number, number, number]
 export type RoughPadding = number | [number, number] | FullPadding
 export type BracketType = 'left' | 'right' | 'top' | 'bottom'
 
-export interface RoughAnnotationConfig extends RoughAnnotationConfigBase {
+export interface RoughAnnotationConfig extends RoughAnnotationConfigBase, Partial<ResolvedOptions> {
   type: RoughAnnotationType
   multiline?: boolean
   rtl?: boolean
 }
 
-export interface RoughAnnotationConfigBase extends Partial<ResolvedOptions> {
+export interface RoughAnnotationConfigBase {
   animate?: boolean // defaults to true
   animationDuration?: number // defaults to 1000ms
   color?: string // defaults to currentColor
@@ -27,6 +27,7 @@ export interface RoughAnnotationConfigBase extends Partial<ResolvedOptions> {
   iterations?: number // defaults to 2
   brackets?: BracketType | BracketType[] // defaults to 'right'
   delay?: number // defaults to 0
+  opacity?: number // defaults to 1
   /**
    * Additional class to add to the root SVG element
    */

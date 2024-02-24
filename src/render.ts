@@ -225,6 +225,8 @@ export function renderAnnotation(
       setAttr(path, 'fill', 'none')
       setAttr(path, 'stroke', config.color || 'currentColor')
       setAttr(path, 'stroke-width', `${strokeWidth}`)
+      if (config.opacity !== undefined)
+        setAttr(path, 'style', `opacity:${config.opacity}`)
       if (animate) {
         const length = path.getTotalLength()
         lengths.push(length)
