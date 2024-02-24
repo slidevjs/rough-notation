@@ -26,6 +26,7 @@ export interface RoughAnnotationConfigBase extends Partial<ResolvedOptions> {
   padding?: RoughPadding // defaults to 5px
   iterations?: number // defaults to 2
   brackets?: BracketType | BracketType[] // defaults to 'right'
+  delay?: number // defaults to 0
   /**
    * Additional class to add to the root SVG element
    */

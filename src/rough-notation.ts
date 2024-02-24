@@ -229,7 +229,7 @@ class RoughAnnotationImpl implements RoughAnnotation {
       const rect = rects[i]
       const ad = totalDuration * (rect.w / totalWidth)
       promises.push(
-        renderAnnotation(svg, rects[i], config, delay + this._animationDelay, ad, this._seed),
+        renderAnnotation(svg, rects[i], config, delay + this._animationDelay + (this._config.delay || 0), ad, this._seed),
       )
       delay += ad
     }
