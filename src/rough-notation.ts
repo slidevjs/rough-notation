@@ -23,6 +23,17 @@ class RoughAnnotationImpl implements RoughAnnotation {
     this.attach()
   }
 
+  getConfig<T extends keyof RoughAnnotationConfig>(key: T) {
+    return this._config[key]
+  }
+
+  setConfig<T extends keyof RoughAnnotationConfig>(key: T, value: RoughAnnotationConfig[T]) {
+    if (this._config[key] !== value) {
+      this._config[key] = value
+      this.refresh()
+    }
+  }
+
   get animate() { return this._config.animate }
   set animate(value) { this._config.animate = value }
 

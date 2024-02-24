@@ -6,6 +6,7 @@ Changes in this fork:
 
 - Expose config and data types
 - Support custom `class` option
-- Support `overrides` option for customizing RoughJS
+- Support passing through all options to RoughJS for full customization
+- Support `getConfig` and `setConfig` methods
 - Improved build assets with `.cjs` and `.mjs`
 - `annotation.show()` returns a promise that resolves when the animation is done

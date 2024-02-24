@@ -18,7 +18,7 @@ export interface RoughAnnotationConfig extends RoughAnnotationConfigBase {
   rtl?: boolean
 }
 
-export interface RoughAnnotationConfigBase {
+export interface RoughAnnotationConfigBase extends Partial<ResolvedOptions> {
   animate?: boolean // defaults to true
   animationDuration?: number // defaults to 1000ms
   color?: string // defaults to currentColor
@@ -30,10 +30,6 @@ export interface RoughAnnotationConfigBase {
    * Additional class to add to the root SVG element
    */
   class?: string
-  /**
-   * RoughJS options
-   */
-  overrides?: Partial<ResolvedOptions>
 }
 
 export interface RoughAnnotation extends RoughAnnotationConfigBase {
